@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZENSO - Your Ultimate Anime Streaming Experience</title>
+    <title>ZENSO - Premium Anime Streaming Experience</title>
     <style>
         * {
             margin: 0;
@@ -16,11 +16,19 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a0033 50%, #0f0820 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a0033 25%, #2d1550 50%, #1a0033 75%, #0a0e27 100%);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
             background-attachment: fixed;
             color: #e0e0e0;
             overflow-x: hidden;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* Navigation */
@@ -28,25 +36,48 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1rem 2rem;
-            background: rgba(10, 14, 39, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+            padding: 1.2rem 2rem;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(0, 255, 136, 0.2);
             z-index: 1000;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            box-shadow: 0 8px 32px rgba(0, 255, 136, 0.1);
         }
 
         .nav-logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 900;
             background: linear-gradient(135deg, #00ff88 0%, #00e07d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #b8b8b8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
         }
 
         /* Hero Section */
@@ -70,25 +101,27 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(0, 255, 136, 0.08) 0%, rgba(0, 255, 136, 0.02) 50%, transparent 100%);
-            animation: pulse-glow 8s ease-in-out infinite;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(100, 50, 200, 0.1) 0%, transparent 50%);
+            animation: pulse-glow 10s ease-in-out infinite;
         }
 
         @keyframes pulse-glow {
             0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.3; }
+            50% { transform: scale(1.15); opacity: 0.3; }
         }
 
         .hero-content {
             position: relative;
             z-index: 10;
-            animation: fade-in-up 0.9s ease-out;
+            animation: fade-in-up 1s ease-out;
         }
 
         @keyframes fade-in-up {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(60px);
             }
             to {
                 opacity: 1;
@@ -96,65 +129,96 @@
             }
         }
 
+        .hero-badge {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1.5px solid rgba(0, 255, 136, 0.5);
+            border-radius: 25px;
+            color: #00ff88;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(0, 255, 136, 0.6); }
+        }
+
         .hero-logo {
-            font-size: 6rem;
+            font-size: 7rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #00ff88 0%, #00e07d 100%);
+            background: linear-gradient(135deg, #00ff88 0%, #00e07d 50%, #00cc6e 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 1.5rem;
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             animation: glow-pulse 2.5s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.4));
+            filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.5));
+            text-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
         }
 
         @keyframes glow-pulse {
-            0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.4)); }
-            50% { filter: drop-shadow(0 0 50px rgba(0, 255, 136, 0.6)); }
+            0%, 100% { filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.5)); }
+            50% { filter: drop-shadow(0 0 60px rgba(0, 255, 136, 0.8)); }
         }
 
         .hero-headline {
-            font-size: 3.8rem;
-            font-weight: 800;
-            margin-bottom: 1.2rem;
+            font-size: 4.2rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
             color: #ffffff;
-            line-height: 1.3;
-            max-width: 900px;
+            line-height: 1.2;
+            max-width: 1000px;
+            text-shadow: 0 4px 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .hero-headline span {
+            background: linear-gradient(135deg, #00ff88 0%, #00e07d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             color: #b8b8b8;
             margin-bottom: 3.5rem;
-            max-width: 650px;
-            line-height: 1.7;
+            max-width: 700px;
+            line-height: 1.8;
             font-weight: 400;
         }
 
         /* Download Buttons */
         .download-section {
             display: flex;
-            gap: 1.2rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .download-btn {
-            padding: 1.1rem 2.8rem;
-            font-size: 1.15rem;
-            font-weight: 700;
+            padding: 1.3rem 3.2rem;
+            font-size: 1.1rem;
+            font-weight: 800;
             border: none;
-            border-radius: 14px;
+            border-radius: 16px;
             cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.23, 1, 0.320, 1);
-            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(15px);
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            letter-spacing: 1.5px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
         }
@@ -166,8 +230,9 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: left 0.35s ease;
+            background: rgba(255, 255, 255, 0.15);
+            transition: left 0.4s ease;
+            z-index: -1;
         }
 
         .download-btn:hover::before {
@@ -178,73 +243,84 @@
             background: linear-gradient(135deg, #00ff88 0%, #00cc6e 100%);
             color: #000;
             border: 2px solid #00ff88;
+            font-weight: 800;
         }
 
         .btn-android:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 60px rgba(0, 255, 136, 0.5), 0 0 40px rgba(0, 255, 136, 0.3);
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 20px 80px rgba(0, 255, 136, 0.6), 0 0 50px rgba(0, 255, 136, 0.4);
         }
 
         .btn-android:active {
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.02);
         }
 
         .btn-ios {
-            background: rgba(255, 255, 255, 0.08);
-            color: #a8a8a8;
-            border: 2px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.1);
+            color: #d0d0d0;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .btn-ios:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
             color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 12px 40px rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 15px 60px rgba(255, 255, 255, 0.15);
+            transform: translateY(-6px);
         }
 
         /* Features Section */
         .features {
-            padding: 7rem 2rem;
-            max-width: 1300px;
+            padding: 8rem 2rem;
+            max-width: 1400px;
             margin: 0 auto;
             position: relative;
             z-index: 10;
         }
 
         .section-title {
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             color: #ffffff;
-            font-weight: 800;
+            font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            text-shadow: 0 4px 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #00ff88 0%, #00e07d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .section-subtitle {
             text-align: center;
-            color: #999;
-            font-size: 1.1rem;
+            color: #a0a0a0;
+            font-size: 1.2rem;
             margin-bottom: 5rem;
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 500;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1.5px solid rgba(0, 255, 136, 0.2);
-            padding: 2.5rem;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(25px);
+            border: 1.5px solid rgba(0, 255, 136, 0.25);
+            padding: 3rem 2.5rem;
+            border-radius: 25px;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             animation: fade-in-up 0.8s ease-out;
             animation-fill-mode: both;
             position: relative;
@@ -256,23 +332,36 @@
             position: absolute;
             top: -50%;
             right: -50%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, transparent 70%);
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.2) 0%, transparent 70%);
             border-radius: 50%;
-            transition: all 0.4s ease;
+            transition: all 0.5s ease;
         }
 
-        .feature-card:nth-child(1) { animation-delay: 0.15s; }
-        .feature-card:nth-child(2) { animation-delay: 0.25s; }
-        .feature-card:nth-child(3) { animation-delay: 0.35s; }
-        .feature-card:nth-child(4) { animation-delay: 0.45s; }
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            inset: 1.5px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, transparent 100%);
+            border-radius: 23px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
 
         .feature-card:hover {
-            background: rgba(0, 255, 136, 0.12);
-            border-color: rgba(0, 255, 136, 0.6);
-            transform: translateY(-12px);
-            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.25), 0 0 50px rgba(0, 255, 136, 0.1);
+            background: rgba(0, 255, 136, 0.15);
+            border-color: rgba(0, 255, 136, 0.7);
+            transform: translateY(-18px);
+            box-shadow: 0 25px 80px rgba(0, 255, 136, 0.3), 0 0 60px rgba(0, 255, 136, 0.15);
         }
 
         .feature-card:hover::before {
@@ -281,63 +370,136 @@
         }
 
         .feature-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
+            font-size: 4.5rem;
+            margin-bottom: 1.8rem;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-block;
         }
 
         .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.15) rotate(8deg);
         }
 
         .feature-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
             color: #00ff88;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         .feature-card p {
-            color: #a8a8a8;
-            line-height: 1.7;
-            font-size: 0.95rem;
+            color: #b8b8b8;
+            line-height: 1.8;
+            font-size: 1rem;
         }
 
-        /* Screenshots Section */
-        .screenshots {
-            padding: 7rem 2rem;
+        /* Anime Showcase Section */
+        .showcase {
+            padding: 8rem 2rem;
             position: relative;
             z-index: 10;
         }
 
-        .screenshots-container {
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .anime-card {
+            position: relative;
+            height: 350px;
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            group/card;
+            transition: all 0.4s ease;
+        }
+
+        .anime-card-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(100, 50, 200, 0.1));
+            border: 1.5px solid rgba(0, 255, 136, 0.25);
+            border-radius: 18px;
+            transition: all 0.4s ease;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="anime-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="%23006644"/><rect x="10" y="10" width="10" height="10" fill="%23006644"/></pattern></defs><rect width="100" height="100" fill="url(%23anime-pattern)" opacity="0.1"/></svg>');
+        }
+
+        .anime-card-content {
+            position: absolute;
+            inset: 0;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            z-index: 10;
+        }
+
+        .anime-card:hover .anime-card-content {
+            transform: translateY(0);
+        }
+
+        .anime-title {
+            color: #00ff88;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .anime-desc {
+            color: #d0d0d0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .anime-card:hover .anime-card-bg {
+            border-color: rgba(0, 255, 136, 0.7);
+            box-shadow: 0 15px 50px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Phone Mockup */
+        .phone-showcase {
+            padding: 8rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .phone-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 3.5rem;
+            gap: 5rem;
             flex-wrap: wrap;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .phone-mockup {
             position: relative;
-            width: 300px;
-            height: 600px;
+            width: 320px;
+            height: 650px;
             background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%);
-            border-radius: 45px;
-            padding: 14px;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6), 0 0 80px rgba(0, 255, 136, 0.25);
-            border: 2px solid rgba(0, 255, 136, 0.35);
-            animation: float 3.5s ease-in-out infinite;
-            animation-delay: calc(var(--index) * 0.4s);
+            border-radius: 50px;
+            padding: 16px;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7), 0 0 100px rgba(0, 255, 136, 0.3);
+            border: 2.5px solid rgba(0, 255, 136, 0.4);
+            animation: float 4s ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-25px) rotate(1deg); }
+            50% { transform: translateY(-30px) rotate(2deg); }
         }
 
         .phone-mockup::before {
@@ -346,53 +508,40 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 45%;
-            height: 28px;
+            width: 50%;
+            height: 32px;
             background: #000;
-            border-radius: 0 0 22px 22px;
-            z-index: 10;
-        }
-
-        .phone-mockup::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 8px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 50%;
-            z-index: 5;
+            border-radius: 0 0 25px 25px;
+            z-index: 20;
         }
 
         .phone-screen {
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, #0a0e27 0%, #1a0033 100%);
-            border-radius: 40px;
+            border-radius: 45px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             color: #00ff88;
-            font-weight: 800;
-            font-size: 2.3rem;
+            font-weight: 900;
+            font-size: 2.5rem;
             text-align: center;
             padding: 2rem;
             position: relative;
         }
 
         .screen-content {
-            animation: slide-in 0.7s cubic-bezier(0.23, 1, 0.320, 1);
-            line-height: 1.5;
+            animation: slide-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            line-height: 1.6;
         }
 
         @keyframes slide-in {
             from {
                 opacity: 0;
-                transform: translateY(25px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -400,13 +549,36 @@
             }
         }
 
+        .phone-description {
+            max-width: 400px;
+            text-align: left;
+            animation: fade-in-up 1s ease-out;
+            animation-delay: 0.3s;
+        }
+
+        .phone-description h3 {
+            font-size: 2rem;
+            color: #00ff88;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 900;
+        }
+
+        .phone-description p {
+            color: #b8b8b8;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
         /* Footer */
         footer {
-            padding: 3.5rem 2rem;
+            padding: 4rem 2rem;
             text-align: center;
-            border-top: 1px solid rgba(0, 255, 136, 0.15);
-            background: rgba(10, 14, 39, 0.7);
-            backdrop-filter: blur(10px);
+            border-top: 2px solid rgba(0, 255, 136, 0.2);
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(15px);
             position: relative;
             z-index: 10;
         }
@@ -418,23 +590,42 @@
 
         .footer-tagline {
             color: #00ff88;
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         .footer-copyright {
             color: #707070;
             font-size: 0.95rem;
             font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: #00ff88;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
         }
 
         /* Scroll Indicator */
         .scroll-indicator {
             position: absolute;
-            bottom: 40px;
+            bottom: 50px;
             left: 50%;
             transform: translateX(-50%);
             animation: bounce 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
@@ -443,50 +634,57 @@
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-12px); }
-            60% { transform: translateX(-50%) translateY(-6px); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-8px); }
         }
 
         .scroll-dot {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             background: #00ff88;
             border-radius: 50%;
             margin: 0 auto;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.7);
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero-logo {
-                font-size: 4rem;
+                font-size: 4.5rem;
+                letter-spacing: 3px;
             }
 
             .hero-headline {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
 
             .hero-subtitle {
-                font-size: 1.05rem;
+                font-size: 1.1rem;
                 margin-bottom: 2.5rem;
             }
 
             .download-btn {
-                padding: 0.9rem 2.2rem;
-                font-size: 1rem;
+                padding: 1rem 2.2rem;
+                font-size: 0.95rem;
+                letter-spacing: 1px;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
+                letter-spacing: 2px;
             }
 
-            .screenshots-container {
+            .phone-container {
                 gap: 2.5rem;
             }
 
             .phone-mockup {
-                width: 260px;
-                height: 520px;
+                width: 280px;
+                height: 560px;
+            }
+
+            .phone-description h3 {
+                font-size: 1.6rem;
             }
 
             nav {
@@ -494,26 +692,47 @@
             }
 
             .nav-logo {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
             }
 
             .features {
                 padding: 5rem 1.5rem;
             }
 
-            .screenshots {
+            .showcase {
                 padding: 5rem 1.5rem;
+            }
+
+            .phone-showcase {
+                padding: 5rem 1.5rem;
+            }
+
+            .features-grid {
+                gap: 2rem;
+            }
+
+            .feature-card {
+                padding: 2rem 1.5rem;
             }
         }
 
         @media (max-width: 480px) {
             .hero {
-                margin-top: 70px;
+                margin-top: 80px;
                 padding: 1.5rem;
             }
 
             .hero-logo {
-                font-size: 3rem;
+                font-size: 3.2rem;
                 letter-spacing: 2px;
                 margin-bottom: 1rem;
             }
@@ -528,6 +747,12 @@
                 margin-bottom: 2rem;
             }
 
+            .hero-badge {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
             .download-section {
                 flex-direction: column;
                 width: 100%;
@@ -537,20 +762,39 @@
             .download-btn {
                 width: 100%;
                 padding: 1rem 1.5rem;
-                font-size: 0.95rem;
+                font-size: 0.85rem;
+                letter-spacing: 0.8px;
             }
 
             .phone-mockup {
-                width: 220px;
-                height: 440px;
+                width: 240px;
+                height: 480px;
             }
 
             .phone-screen {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+
+            .phone-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .phone-description {
+                text-align: center;
+            }
+
+            .phone-description h3 {
+                font-size: 1.4rem;
+            }
+
+            .phone-description p {
+                font-size: 0.9rem;
             }
 
             .section-title {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
+                letter-spacing: 1px;
             }
 
             .features-grid {
@@ -559,15 +803,16 @@
             }
 
             .feature-card {
-                padding: 2rem;
+                padding: 1.8rem 1.2rem;
             }
 
             .feature-icon {
-                font-size: 3rem;
+                font-size: 3.5rem;
+                margin-bottom: 1rem;
             }
 
             .feature-card h3 {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
 
             nav {
@@ -576,18 +821,36 @@
 
             .nav-logo {
                 font-size: 1.2rem;
+                letter-spacing: 1px;
+            }
+
+            .nav-links {
+                display: none;
             }
 
             .features {
                 padding: 3.5rem 1rem;
             }
 
-            .screenshots {
+            .showcase {
                 padding: 3.5rem 1rem;
+            }
+
+            .phone-showcase {
+                padding: 3.5rem 1rem;
+            }
+
+            .showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             footer {
                 padding: 2.5rem 1.5rem;
+            }
+
+            .footer-tagline {
+                font-size: 1.1rem;
             }
         }
 
@@ -607,14 +870,20 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-logo">ZENSO</div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#showcase">Anime</a>
+            <a href="#preview">Preview</a>
+        </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
+            <div class="hero-badge">🎌 Premium Anime Streaming</div>
             <div class="hero-logo">ZENSO</div>
-            <h1 class="hero-headline">Your Ultimate Anime Streaming Experience</h1>
-            <p class="hero-subtitle">Watch your favorite anime in HD with fast streaming and a beautiful interface.</p>
+            <h1 class="hero-headline">Immerse Yourself in <span>Endless Anime</span></h1>
+            <p class="hero-subtitle">Experience ultra-fast HD streaming with an intelligently designed interface. Watch thousands of anime series in one beautiful app.</p>
             
             <div class="download-section">
                 <a href="https://github.com/editorrapp225-cyber/Zenso/releases/download/V1.0.0/app-release.apk" class="download-btn btn-android">
@@ -632,58 +901,134 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features">
-        <h2 class="section-title">Why Choose ZENSO?</h2>
-        <p class="section-subtitle">Experience the best anime streaming platform with premium features</p>
+    <section class="features" id="features">
+        <h2 class="section-title">Why <span>ZENSO</span>?</h2>
+        <p class="section-subtitle">Discover premium features designed for true anime enthusiasts</p>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">🎬</div>
-                <h3>HD Streaming</h3>
-                <p>Crystal clear 1080p quality with adaptive bitrate streaming for smooth playback on any connection.</p>
+                <h3>4K HD Streaming</h3>
+                <p>Crystal clear quality up to 1080p with adaptive bitrate streaming for smooth playback on any network speed.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">⚡</div>
-                <h3>Fast Performance</h3>
-                <p>Lightning-fast loading times and zero lag with our optimized streaming engine and servers.</p>
+                <h3>Lightning Fast</h3>
+                <p>Optimized streaming engine delivers instant loading with zero buffering. Watch what you want, instantly.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">✨</div>
-                <h3>Beautiful UI</h3>
-                <p>Modern, intuitive interface designed for the ultimate anime watching experience on mobile devices.</p>
+                <h3>Beautiful Design</h3>
+                <p>Modern, intuitive interface crafted specifically for anime lovers. Gorgeous dark theme that's easy on the eyes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Massive Library</h3>
+                <p>Access thousands of anime titles from classic series to the latest releases all in one place.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">❤️</div>
+                <h3>Smart Recommendations</h3>
+                <p>AI-powered suggestions based on your watch history. Discover anime you'll absolutely love.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🔄</div>
-                <h3>Free Updates</h3>
-                <p>Regular updates with new features, content, and improvements delivered at no extra cost to you.</p>
+                <h3>Regular Updates</h3>
+                <p>Continuous improvements with new features, content, and performance enhancements delivered regularly.</p>
             </div>
         </div>
     </section>
 
-    <!-- Screenshots Section -->
-    <section class="screenshots">
-        <h2 class="section-title">See It In Action</h2>
-        <p class="section-subtitle">Explore our premium anime streaming interface</p>
-        <div class="screenshots-container">
-            <div class="phone-mockup" style="--index: 0;">
+    <!-- Anime Showcase Section -->
+    <section class="showcase" id="showcase">
+        <h2 class="section-title">Featured <span>Anime</span></h2>
+        <p class="section-subtitle">Explore our premium collection</p>
+        <div class="showcase-grid">
+            <div class="anime-card">
+                <div class="anime-card-bg"></div>
+                <div class="anime-card-content">
+                    <div class="anime-title">Attack on Titan</div>
+                    <div class="anime-desc">Epic adventure in a world threatened by colossal titans.</div>
+                </div>
+            </div>
+            <div class="anime-card">
+                <div class="anime-card-bg"></div>
+                <div class="anime-card-content">
+                    <div class="anime-title">Demon Slayer</div>
+                    <div class="anime-desc">A young demon slayer's journey to save his sister.</div>
+                </div>
+            </div>
+            <div class="anime-card">
+                <div class="anime-card-bg"></div>
+                <div class="anime-card-content">
+                    <div class="anime-title">Jujutsu Kaisen</div>
+                    <div class="anime-desc">High school student battles curses with supernatural powers.</div>
+                </div>
+            </div>
+            <div class="anime-card">
+                <div class="anime-card-bg"></div>
+                <div class="anime-card-content">
+                    <div class="anime-title">Steinsgate</div>
+                    <div class="anime-desc">Time travel thriller that will blow your mind.</div>
+                </div>
+            </div>
+            <div class="anime-card">
+                <div class="anime-card-bg"></div>
+                <div class="anime-card-content">
+                    <div class="anime-title">My Hero Academia</div>
+                    <div class="anime-desc">Aspiring hero in a world of superheroes and villains.</div>
+                </div>
+            </div>
+            <div class="anime-card">
+                <div class="anime-card-bg"></div>
+                <div class="anime-card-content">
+                    <div class="anime-title">Naruto Shippuden</div>
+                    <div class="anime-desc">Legendary ninja journey across the hidden villages.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phone Preview Section -->
+    <section class="phone-showcase" id="preview">
+        <h2 class="section-title">App <span>Preview</span></h2>
+        <p class="section-subtitle">See the beauty of ZENSO in action</p>
+        <div class="phone-container">
+            <div class="phone-mockup" style="--delay: 0s;">
                 <div class="phone-screen">
                     <div class="screen-content">
                         🎨<br>Browse<br>Anime
                     </div>
                 </div>
             </div>
-            <div class="phone-mockup" style="--index: 1;">
+            <div class="phone-description">
+                <h3>Discover</h3>
+                <p>Browse through our massive collection of anime with intuitive search and smart categorization. Find exactly what you're looking for instantly.</p>
+            </div>
+        </div>
+        <div class="phone-container" style="margin-top: 4rem;">
+            <div class="phone-description">
+                <h3>Watch</h3>
+                <p>Experience seamless playback with our advanced streaming technology. Enjoy multiple subtitle options and adjustable video quality.</p>
+            </div>
+            <div class="phone-mockup" style="--delay: 0.2s;">
                 <div class="phone-screen">
                     <div class="screen-content">
                         📺<br>Watch<br>Episodes
                     </div>
                 </div>
             </div>
-            <div class="phone-mockup" style="--index: 2;">
+        </div>
+        <div class="phone-container" style="margin-top: 4rem;">
+            <div class="phone-mockup" style="--delay: 0.4s;">
                 <div class="phone-screen">
                     <div class="screen-content">
                         💚<br>Save<br>Favorites
                     </div>
                 </div>
+            </div>
+            <div class="phone-description">
+                <h3>Organize</h3>
+                <p>Create personal watchlists, track your progress, and get notified when new episodes are available. Never miss your favorite shows.</p>
             </div>
         </div>
     </section>
@@ -691,15 +1036,20 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p class="footer-tagline">Made for Anime Fans.</p>
+            <p class="footer-tagline">✨ Made for Anime Fans ✨</p>
             <p class="footer-copyright">Copyright © 2026 ZENSO. All rights reserved. | Premium Anime Streaming Platform</p>
+            <div class="social-links">
+                <a href="#" title="Discord">💬</a>
+                <a href="#" title="Twitter">🐦</a>
+                <a href="#" title="Instagram">📸</a>
+            </div>
         </div>
     </footer>
 
     <script>
         // Handle Coming Soon button
         function handleComingSoon() {
-            alert('🍎 iOS version is coming soon!\n\nStay tuned for updates.');
+            alert('🍎 iOS version is coming soon!\n\nStay tuned for updates on the App Store.');
         }
 
         // Smooth scroll for anchor links
@@ -722,7 +1072,9 @@
             const scrollPosition = window.pageYOffset;
             const heroContent = document.querySelector('.hero-content');
             
-            heroContent.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+            if (heroContent) {
+                heroContent.style.transform = `translateY(${scrollPosition * 0.4}px)`;
+            }
         });
 
         // Intersection Observer for scroll animations
@@ -740,11 +1092,11 @@
             });
         }, observerOptions);
 
-        // Observe feature cards and phone mockups
-        document.querySelectorAll('.feature-card, .phone-mockup').forEach(el => {
+        // Observe feature cards, anime cards, and phone mockups
+        document.querySelectorAll('.feature-card, .anime-card, .phone-mockup, .phone-description').forEach(el => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s cubic-bezier(0.23, 1, 0.320, 1), transform 0.6s cubic-bezier(0.23, 1, 0.320, 1)';
+            el.style.transform = 'translateY(40px)';
+            el.style.transition = 'opacity 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)';
             observer.observe(el);
         });
 
@@ -758,14 +1110,14 @@
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 
-                const rotateX = (y - centerY) * 0.05;
-                const rotateY = (centerX - x) * 0.05;
+                const rotateX = (y - centerY) * 0.03;
+                const rotateY = (centerX - x) * 0.03;
                 
-                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px)`;
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-18px)`;
             });
 
             card.addEventListener('mouseleave', function() {
-                this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(-12px)';
+                this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(-18px)';
             });
         });
 
@@ -785,26 +1137,29 @@
         // Add ripple effect to buttons
         document.querySelectorAll('.download-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.style.position = 'absolute';
-                ripple.style.background = 'rgba(255, 255, 255, 0.5)';
-                ripple.style.borderRadius = '50%';
-                ripple.style.transform = 'scale(0)';
-                ripple.style.animation = 'ripple-animation 0.6s ease-out';
-                ripple.style.pointerEvents = 'none';
-                
-                this.style.position = 'relative';
-                this.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 600);
+                if (this.classList.contains('btn-android')) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.style.position = 'absolute';
+                    ripple.style.background = 'rgba(0, 0, 0, 0.3)';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple-animation 0.6s ease-out';
+                    ripple.style.pointerEvents = 'none';
+                    
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => ripple.remove(), 600);
+                }
             });
         });
 
